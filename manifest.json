@@ -1,0 +1,35 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "icons/icon128.png",
+         "16": "icons/icon16.png",
+         "32": "icons/icon32.png",
+         "48": "icons/icon48.png"
+      },
+      "default_title": "Open Meta AI Automator"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "*://*.meta.ai/*", "*://meta.ai/*" ]
+   } ],
+   "description": "A productivity assistant to streamline text-to-image or text-to-video generation on Meta Ai. Queue prompts to save time.",
+   "host_permissions": [ "*://*.meta.ai/*", "*://meta.ai/*" ],
+   "icons": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkyWXlAWPwA6AlYSOotHukzoopj9d3TrQ1jPcQbXjFC9cCcILvAIBTeDFdMZmXLgaivPfENEOiq2WJeu9ZC+tj7ylm3X82fqq0icJ6+Y6A4wC1hem6mSJqiEdzxpjN63C+QRBdiq+gBJhA3Bwq0UEt9CJ3ldMmW02bq2KmHkctjyMOXcTzHlLLwSxx+50Jk0oScjXNbkBJ4ZNzAZcHkRPnYfxaPLzfDdIET4C0FCqhbqOyhzsrzJqtzYmXe6pOQRqGEkbsGFrAQ3Dx7GliwcWhb/NIB21+TQ8VGJwClZEwNRR9GSjfv+KCHMgLHV5/A7VHJuvi1TvHSvSjp8XYeqP8wIDAQAB",
+   "manifest_version": 3,
+   "name": "Meta Ai Automator",
+   "permissions": [ "sidePanel", "activeTab", "downloads" ],
+   "side_panel": {
+      "default_path": "sidepanel.html"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.3"
+}
