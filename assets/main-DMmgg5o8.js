@@ -299,9 +299,8 @@ Error generating stack: `+e.message+`
       reader.onload = (re) => {
         let content = re.target?.result || "";
         let parsed = content
-          .replace(new RegExp("^[\\\\r\\\\n]+|[\\\\r\\\\n]+$", "g"), "")
-          .split(new RegExp("\\\\r?\\\\n\\\\s*\\\\r?\\\\n"))
-          .map((p) => p.trim())
+          .replace(/^[\r\n]+|[\r\n]+$/g, "")
+          .split(/\r?\n\s*\r?\n+/).map((p) => p.trim())
           .filter((p) => p.length > 0);
         t((prev) => (prev ? prev + "\\n\\n" : "") + parsed.join("\\n\\n"));
       };
@@ -319,10 +318,9 @@ Error generating stack: `+e.message+`
     let reader = new FileReader();
     reader.onload = (re) => {
       let content = re.target?.result || "";
-      let normalized = content.replace(new RegExp("^[\\\\r\\\\n]+|[\\\\r\\\\n]+$", "g"), "");
+      let normalized = content.replace(/^[\r\n]+|[\r\n]+$/g, "");
       let parsedPrompts = normalized
-        .split(new RegExp("\\\\r?\\\\n\\\\r?\\\\n"))
-        .map((p) => p.trim())
+        .split(/\r?\n\s*\r?\n+/).map((p) => p.trim())
         .filter((p) => p.length > 0);
 
       setI2vPrompts(parsedPrompts);
@@ -637,8 +635,8 @@ Error generating stack: `+e.message+`
         return;
       }
       let splitPrompts = e
-        .split(new RegExp("\\\\r?\\\\n\\\\s*\\\\r?\\\\n"))
-        .map((item) => item.trim())
+        .replace(/^[\r\n]+|[\r\n]+$/g, "")
+        .split(/\r?\n\s*\r?\n+/).map((item) => item.trim())
         .filter((item) => item.length > 0);
       if (splitPrompts.length === 0) {
         s((prev) => [
